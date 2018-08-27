@@ -15,4 +15,5 @@
 
     npm i mobx -S
 
+    npm i react react-dom prop-types mobx-react -S
 ```
