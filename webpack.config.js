@@ -3,7 +3,8 @@ const webpack = require('webpack');
 const config = {
     mode: 'development',
     entry: [
-        path.resolve(__dirname, 'src/index.js')
+        // path.resolve(__dirname, 'src/index.js'),
+        path.resolve(__dirname, 'src/decorator.js'),
     ],
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -17,7 +18,11 @@ const config = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        "presets": ["env"],
+                        presets: ["env"],
+                        plugins: [
+                            'transform-class-properties',
+                            'transform-decorators-legacy'
+                        ]
                     }
                 }
             }
