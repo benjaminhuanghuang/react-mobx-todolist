@@ -3,8 +3,8 @@ const webpack = require('webpack');
 const config = {
     mode: 'development',
     entry: [
-        // path.resolve(__dirname, 'src/index.js'),
-        path.resolve(__dirname, 'src/decorator.js'),
+        path.resolve(__dirname, 'src/index.js'),
+        // path.resolve(__dirname, 'src/decorator.js'),
     ],
     output: {
         path: path.resolve(__dirname, 'dist'),

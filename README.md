@@ -13,4 +13,6 @@
 
     npm i babel-plugin-transform-decorators-legacy -D     // support decorators
 
+    npm i mobx -S
+
 ```
