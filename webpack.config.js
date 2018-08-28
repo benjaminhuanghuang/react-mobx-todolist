@@ -20,8 +20,9 @@ const config = {
                     options: {
                         presets: ["env", "react"],
                         plugins: [
+                            // Wrong order causes mbox stop working
+                            'transform-decorators-legacy',
                             'transform-class-properties',
-                            'transform-decorators-legacy'
                         ]
                     }
                 }

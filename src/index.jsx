@@ -1,20 +1,20 @@
+import { observable, action } from 'mobx';
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import PropTypes from 'prop-types';
-import {PropTypes as ObservablePropTypes} from 'mobx-react';
-import { observable, action } from 'mobx';
-
+// import PropTypes from 'prop-types';
+import { PropTypes as ObservablePropTypes, observer } from 'mobx-react';
 
 class Store {
-    @observable cache = {
-        queue: []
+    @observable cache = { queue: [] };
+    @action.bound refresh() {
+        this.cache.queue.push(1);
     }
 };
 
 const store = new Store();
 console.log(store);
 
-
+@observer
 class Bar extends Component {
     static propTypes = {
         queue: ObservablePropTypes.observableArray
@@ -37,11 +37,12 @@ class Foo extends Component {
         console.log(cache);
         return (
             <div>
+                <button onClick={this.props.refresh} >Add</button>
                 <Bar queue={cache.queue}></Bar>
             </div>
         )
     }
 }
 
-ReactDom.render(<Foo cache={store.cache}/>, document.querySelector("#root"));
+ReactDom.render(<Foo cache={store.cache} refresh={store.refresh} />, document.querySelector("#root"));
 
